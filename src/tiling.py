@@ -1,9 +1,19 @@
+import os
+import sys
 from math import ceil
 
 from litemapy import BlockState, Entity, Region, Schematic
 from nbtlib.tag import Compound, Double, List, String
 
-schem: Schematic = Schematic.load("CCWE Parts.litematic")
+
+def resource_path(filename):
+    if hasattr(sys, "_MEIPASS"):
+        return os.path.join(sys._MEIPASS, filename)  # type: ignore
+    return os.path.join(os.path.abspath("."), filename)
+
+
+file_path = resource_path("CCWE Parts.litematic")
+schem: Schematic = Schematic.load(file_path)
 
 OAK_LEAVES: BlockState = BlockState("minecraft:oak_leaves", persistent="true")
 COMPOSTER: BlockState = BlockState("minecraft:composter")
@@ -141,7 +151,7 @@ class TilerDurden:  # pun intended
             dz = dzs = 0
             dzb = logic.length - b6w.length
         else:
-            dz = length - logic.length - 1
+            dz = self.length - logic.length - 1
             dzs = logic.length - s11w.length
             dzb = 0
 
@@ -214,13 +224,3 @@ class TilerDurden:  # pun intended
         )
         schem.regions["Outlines"] = make_outlines(self.width, self.length)
         return schem
-
-
-if __name__ == "__main__":
-    width, length = map(
-        int, input("Enter width and length separated by a space: ").split()
-    )
-    tiler = TilerDurden(width, length)
-    schem = tiler.stack_world_eater()
-    schem.save(path := f"output/{schem.name}.litematic")
-    print(f"Saved to '{path}'")
