@@ -177,7 +177,7 @@ class TilerDurden:  # pun intended
         for _ in range(b1):
             paste_region(reg, b6w, (x, logic.height - b6w.height, dzb))
             x += b6w.width
-        x -= 1
+        x -= not main
         for _ in range(b2):
             paste_region(reg, b5w, (x, logic.height - b5w.height, dzb))
             x += b5w.width
@@ -189,7 +189,7 @@ class TilerDurden:  # pun intended
             main_st[x, y, z] = TRAPDOOR
             main_st.entities.append(spawn_boat(x + 0.71, y, z - 0.2))
 
-        x0, y0, z0 = 6, main_st.height - 4, 12
+        x0, y0, z0 = 6, main_st.height - 5, 12
         width = main_st.width
         if width < 100:
             return
