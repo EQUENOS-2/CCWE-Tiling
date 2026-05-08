@@ -2,7 +2,7 @@
 A small program for tiling the cart-coral-less world eater by `_spindle_` and `Aqkrm`. The eater is compatible with minecraft `1.13+`.
 
 # Installation
-The easiest way is to [download](https://github.com/EQUENOS-2/CCWE-Tiling/releases/download/v1.0/CCWE_maker.exe) an executable file from releases.
+The easiest way is to [download](https://github.com/EQUENOS-2/CCWE-Tiling/releases/download/v2.0/CCWE_maker.exe) an executable file from releases.
 
 If you have [Python](https://www.python.org/downloads/), you can install the `litemapy` library by running `pip install litemapy` in the console. After that you'll be able to run the `.py` file directly.
 
