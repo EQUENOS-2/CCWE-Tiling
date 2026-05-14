@@ -16,7 +16,6 @@ file_path = resource_path("CCWE Parts.litematic")
 schem: Schematic = Schematic.load(file_path)
 
 OAK_LEAVES: BlockState = BlockState("minecraft:oak_leaves", persistent="true")
-COMPOSTER: BlockState = BlockState("minecraft:composter")
 TRAPDOOR: BlockState = BlockState("minecraft:oak_trapdoor", facing="north", open="true")
 
 ML: Region = schem.regions["Main Logic"]
@@ -210,13 +209,13 @@ class TilerDurden:  # pun intended
 
     def stack_world_eater(self) -> Schematic:
         if self.width == self.length:
-            suffix = f"{self.width}²"
+            suffix = f"{self.width}"  # f"{self.width}²"
         else:
             suffix = f"{self.width}x{self.length}"
 
         schem = Schematic(f"CCWE {suffix}", author="_spindle_, Aqkrm")
         main_st = self.make_station(ML, MBT, MBT5W, MST, MST9W, MST7W, MSE, main=True)
-        self.arrange_loader_spots(main_st)
+        # self.arrange_loader_spots(main_st)
 
         schem.regions["Main"] = main_st
         schem.regions["Return"] = self.make_station(
